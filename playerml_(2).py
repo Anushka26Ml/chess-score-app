@@ -419,7 +419,7 @@ insight = get_gemini_insight("/kaggle/input/chess-board/board1.jpg")
 print("Strategic JSON Insight:")
 print(json.dumps(insight, indent=2))
 
-!pip install streamlit
+
 
 import streamlit as st
 from PIL import Image
