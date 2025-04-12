@@ -2,8 +2,18 @@ import streamlit as st
 from PIL import Image
 import json
 import re
+import requests
+import tensorflow as tf 
 import google.generativeai as genai
 
+# MODEL DOWNLOAD & LOAD (just after imports)
+url = "
+https://huggingface.co/ieeeAB/chess_model.h5/resolve/main/chess_model.h5" 
+response = requests.get(url)
+with open("chess_model.h5", "wb") as f:
+    f.write(response.content)
+
+model = tf.keras.models.load_model("chess_model.h5")
 # Gemini API setup
 genai.configure(api_key="AIzaSyD_ttXOxFAW6KTEzMWz8QyEcdH9cWUza-k")  # Replace this!
 model = genai.GenerativeModel("gemini-2.0-flash-exp")
